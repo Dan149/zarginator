@@ -1,19 +1,29 @@
 # Zarginator
 ## Easy-to-use command line args management library for zig.
 
-### How to compile Zarginator:
+### How to add Zarginator package to your zig project:
 
-First clone the repo:
+First add Zarginator to your _build.zig.zon_ dependencies:
 
-`git clone https://github.com/Dan149/zarginator`
+`zig fetch --save git+https://github.com/Dan149/zarginator/#HEAD`
 
-Once in the folder, you can build the library (assuming you have [Zig](https://ziglang.org) installed):
+Then add the dependency to your _build.zig_ file:
 
-`zig build`
+```
+(...)
 
-The static library will be in the __zig-out/lib__ folder.
+const zarginator_package = b.dependency("zarginator", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
+const zarginator_module = zarginator_package.module("zarginator");
+exe.root_module.addimport("zarginator", zarginator_module);
+```
 
 ### How to use Zarginator:
+
+Import: `const zarg = @import("zarginator");`
 
 See [main.zig](src/main.zig) file
 and Flag struct in [root.zig](src/root.zig#L3C1-L6C3) file.
