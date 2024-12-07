@@ -18,7 +18,7 @@ const zarginator_package = b.dependency("zarginator", .{
     });
 
 const zarginator_module = zarginator_package.module("zarginator");
-exe.root_module.addimport("zarginator", zarginator_module);
+exe.root_module.addImport("zarginator", zarginator_module);
 ```
 
 ### How to use Zarginator:
